@@ -1,0 +1,108 @@
+{
+  "name": "isBusinessEmail: AI agent tool",
+  "nodes": [
+    {
+      "id": "a0",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "options": {}
+      },
+      "webhookId": "6f1d2c1e-0b5a-4f7e-9a3c-1b2d3e4f5a6b"
+    },
+    {
+      "id": "a1",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        260,
+        0
+      ],
+      "parameters": {
+        "options": {
+          "systemMessage": "You qualify leads. When the user gives you an email address, domain or website, call the isBusinessEmail tool and explain the category and recommendation in one or two sentences."
+        }
+      }
+    },
+    {
+      "id": "a2",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        160,
+        220
+      ],
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "a3",
+      "name": "Check email in isBusinessEmail",
+      "type": "n8n-nodes-isbusinessemail.isBusinessEmailTool",
+      "typeVersion": 1,
+      "position": [
+        400,
+        220
+      ],
+      "parameters": {
+        "resource": "email",
+        "operation": "check",
+        "inputType": "email",
+        "value": "={{ $fromAI('Value', 'The email address to check', 'string') }}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check email in isBusinessEmail": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

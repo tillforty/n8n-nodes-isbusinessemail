@@ -37,6 +37,18 @@ Each item is one API call and counts toward your quota (100 a day on the free pl
 
 To keep leads flowing if the API is unreachable, set the node's **Settings → On Error** to *Continue (using error output)* and route that output the same way as `allow`.
 
+## Example workflows
+
+Import these from [`examples/`](examples) (**Workflows → Import from URL** or **Import from file**):
+
+| Workflow | What it shows |
+|---|---|
+| [`route-leads.json`](examples/route-leads.json) | Check each lead and route it on `recommendation` (allow, review, block). API errors go to their own branch. |
+| [`all-operations.json`](examples/all-operations.json) | Check an email, a website (strict policy) and a domain (deep check), verify a mailbox, get usage. |
+| [`ai-agent-tool.json`](examples/ai-agent-tool.json) | An AI Agent that uses isBusinessEmail as a tool. Self-hosted n8n needs `N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true` to use community nodes as tools. |
+
+After importing a workflow, select your isBusinessEmail credential in each isBusinessEmail node, and an OpenAI credential in the agent example.
+
 ## Compatibility
 
 Built with `@n8n/node-cli` 0.53 (n8n Nodes API version 1).

@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-isbusinessemail",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "n8n node for isBusinessEmail: tell work emails from personal and disposable ones, detect Google Workspace and Microsoft 365, verify mailboxes",
 	"license": "MIT",
 	"homepage": "https://isbusinessemail.com/integrations/n8n",

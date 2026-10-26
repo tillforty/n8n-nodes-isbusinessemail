@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-isbusinessemail",
+	"node": "n8n-nodes-isbusinessemail.isBusinessEmail",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Marketing & Content", "Sales", "Utility"],

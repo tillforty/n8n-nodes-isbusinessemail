@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- Codex `node` field uses the fully-qualified identifier `n8n-nodes-isbusinessemail.isBusinessEmail`
+
 ## 0.1.1
 
 - Published from GitHub Actions with npm provenance (no code changes)

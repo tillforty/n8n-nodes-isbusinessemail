@@ -1,0 +1,54 @@
+{
+	"name": "n8n-nodes-isbusinessemail",
+	"version": "0.1.0",
+	"description": "n8n node for isBusinessEmail: tell work emails from personal and disposable ones, detect Google Workspace and Microsoft 365, verify mailboxes",
+	"license": "MIT",
+	"homepage": "https://isbusinessemail.com/integrations/n8n",
+	"keywords": [
+		"n8n-community-node-package",
+		"isbusinessemail",
+		"email-validation",
+		"business-email",
+		"lead-qualification"
+	],
+	"author": {
+		"name": "isBusinessEmail",
+		"email": "hello@isbusinessemail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tillforty/n8n-nodes-isbusinessemail.git"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/IsBusinessEmailApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/IsBusinessEmail/IsBusinessEmail.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "0.53.4",
+		"eslint": "9.32.0",
+		"prettier": "3.6.2",
+		"release-it": "^21.1.0",
+		"typescript": "5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
